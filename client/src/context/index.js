@@ -10,7 +10,8 @@ class MyProvider extends Component {
   state = {
     loading: true,
     sendingEmail: false,
-    email: ''
+    email: '',
+    confirming: true
   }
 
   componentDidMount = () => {
