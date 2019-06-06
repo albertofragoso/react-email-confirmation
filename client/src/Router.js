@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import Notifications from './components/Notifications'
 import Landing from './components/Landing'
 import Confirm from './components/Confirm'
 import Spinner from './components/Spinner'
@@ -14,6 +15,7 @@ const Router = () => (
 
         return (
         <BrowserRouter>
+          <Notifications />
           <Switch>
             <Route exact path='/' component={Landing} />
             <Route exact path='/confirm/:id' component={Confirm} />

@@ -5,7 +5,8 @@ export const Mycontext = createContext()
 
 class MyProvider extends Component {
   state = {
-    loading: true
+    loading: true,
+    sendingEmail: false
   }
 
   componentDidMount = () => {
@@ -14,6 +15,8 @@ class MyProvider extends Component {
     .then(() => this.setState({ loading: false }))
     .catch(err => console.log(err))
   }
+
+
 
   render() {
     return(
