@@ -4,7 +4,7 @@ import Notifications from './components/Notifications'
 import Landing from './components/Landing'
 import Confirm from './components/Confirm'
 import Spinner from './components/Spinner'
-import { Mycontext } from './context';
+import { Mycontext } from './context'
 
 const Router = () => (
   <Mycontext.Consumer>
