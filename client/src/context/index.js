@@ -5,7 +5,6 @@ import EmailService from '../services/Email'
 export const Mycontext = createContext()
 
 const service = new EmailService()
-
 class MyProvider extends Component {
   state = {
     loading: true,
@@ -24,6 +23,7 @@ class MyProvider extends Component {
   handleInput = e => {
     const { name, value } = e.target
     this.setState({ [name]: value })
+    console.log(this.state.email)
   }
 
   handleSubmit = e => {
@@ -35,17 +35,19 @@ class MyProvider extends Component {
       notify.show(response.msg)
     })
     .catch(err => console.log(err))
-
   }
 
   render() {
     return(
-      <Mycontext.Provider value={{
-        loading: this.state.loading,
-        sendingEmail: this.state.sendingEmail,
-        handleInput: this.handleInput,
-        handleSubmit: this.handleSubmit
-      }}>
+      <Mycontext.Provider value={
+        {
+          loading: this.state.loading,
+          email: this.state.email,
+          sendingEmail: this.state.sendingEmail,
+          handleInput: this.handleInput,
+          handleSubmit: this.handleSubmit
+        }
+      }>
         {this.props.children}
       </Mycontext.Provider>
     )

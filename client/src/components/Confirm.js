@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Spinner from './Spinner'
+import Loader from './Loader'
 import EmailService from '../services/Email'
 import notify from 'react-notify-toast'
 
@@ -27,9 +27,9 @@ class Confirm extends Component {
     return(
       <div className='confirm'>
         {confirming
-          ? <Spinner size='8x' spinning={'spinning'} />
+          ? <Loader />
           : <Link to='/'>
-              <Spinner size='8x' spinning={''} />
+              <Loader />
             </Link>
         }
       </div>

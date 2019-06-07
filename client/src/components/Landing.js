@@ -1,26 +1,31 @@
 import React from 'react'
-import Spinner from './Spinner'
+import Loader from './Loader'
 import { Mycontext } from '../context';
+import { Container, Col, Row , Form, Button } from 'react-bootstrap'
 
 const Landing = () => (
   <Mycontext.Consumer>
     {
       ({ sendingEmail, handleSubmit, handleInput }) => {
         return (
-          <form>
-            <div>
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" onChange={handleInput} required/>
-            </div>
-            <div>
-              <button type="submit" className="btn" disabled={sendingEmail} onClick={handleSubmit}>
-              {sendingEmail
-                ? <Spinner size="lg" spinning='spinnig' />
-                : 'Here we go!'
-              } 
-              </button>
-            </div>
-          </form>
+          <Container>
+            <Row>
+              <Col sm={12} md={{ span: 6, offset: 3}}>
+              <Form>
+                <Form.Group controlId="formBasucEmail">
+                  <Form.Label>Tu email aquí: </Form.Label>
+                  <Form.Control type="email" placeholder="..." name="email" required onChange={handleInput}/>
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={handleSubmit} disable={sendingEmail}>
+                  {sendingEmail
+                    ? <><Loader /> Sending...</>
+                    : <span role="img" arial-label="rocket">Here we go! 🚀</span>
+                  }
+                </Button>
+              </Form>
+              </Col>
+            </Row>
+          </Container>
         )
       }
     }
