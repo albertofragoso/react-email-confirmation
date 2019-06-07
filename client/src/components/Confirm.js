@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Loader from './Loader'
 import EmailService from '../services/Email'
 import notify from 'react-notify-toast'
+import { Container, Col, Row } from 'react-bootstrap'
 
 const service = new EmailService()
 
@@ -25,14 +26,18 @@ class Confirm extends Component {
   render = () => {
     const { confirming } = this.state
     return(
-      <div className='confirm'>
-        {confirming
-          ? <Loader />
-          : <Link to='/'>
-              <Loader />
-            </Link>
-        }
-      </div>
+      <Container>
+        <Row>
+          <Col sm={12} md={{ span: 6, offset: 3}}>
+          {confirming
+            ? <Loader />
+            : <Link to='/'>
+                <Loader />
+              </Link>
+          }
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }
