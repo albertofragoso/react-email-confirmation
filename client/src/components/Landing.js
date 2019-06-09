@@ -16,7 +16,7 @@ const Landing = () => (
                   <Form.Label>Tu email aquí: </Form.Label>
                   <Form.Control type="email" placeholder="..." name="email" required onChange={handleInput}/>
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={handleSubmit} disable={sendingEmail}>
+                <Button variant="primary" type="submit" onClick={handleSubmit} >
                   {sendingEmail
                     ? <><Loader /> Sending...</>
                     : <span role="img" arial-label="rocket">Here we go! 🚀</span>

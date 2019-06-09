@@ -16,7 +16,7 @@ exports.sendEmail = (to, id) => {
       html: styleEmail(id),
       text: `Copy and paste this link: ${process.env.ORIGIN}/confirm/${id}`
     })
-    .then(response => console.log(response))
+    .then(response => response)
     .catch(err => console.log(err))
 }
 

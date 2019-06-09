@@ -29,11 +29,11 @@ router.get('/confirm/:id', (req, res, next) => {
       if(!user) res.json({ msg: 'Could not find you.' })
       else if(user && !user.confirmed) {
         User.findByIdAndUpdate(id, { confirmed: true })
-          .then(() => res.json({ msg: 'Your has been confformed.' }))
+          .then(() => res.json({ msg: 'Your email has been confirmed.' }))
           .catch(err => console.log(err))
       }
       else {
-        res.json({ msg: 'Your emial was already confirm.' }) 
+        res.json({ msg: 'Your email was already confirm.' }) 
       }
     })
     .catch(err => console.log(err))

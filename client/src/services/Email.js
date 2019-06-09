@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3000/'
+const baseURL = 'http://localhost:3000'
 
 class EmailService {
   constructor() {
@@ -20,6 +20,13 @@ class EmailService {
   sendemail = email => {
     return this.service
       .post('/email', email)
+      .then(({ data }) => data)
+      .catch(err => err)
+  }
+
+  confirmemail = id => {
+    return this.service
+      .get(`/email/confirm/${id}`)
       .then(({ data }) => data)
       .catch(err => err)
   }

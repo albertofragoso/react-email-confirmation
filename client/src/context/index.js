@@ -1,5 +1,5 @@
 import React, { createContext, Component } from 'react'
-import notify from 'react-notify-toast'
+import { notify } from 'react-notify-toast'
 import EmailService from '../services/Email'
 
 export const Mycontext = createContext()
@@ -23,18 +23,17 @@ class MyProvider extends Component {
   handleInput = e => {
     const { name, value } = e.target
     this.setState({ [name]: value })
-    console.log(this.state.email)
   }
 
   handleSubmit = e => {
     this.setState({ sendingEmail: true })
     service
-    .sendemail(this.state.email)
-    .then(response => {
-      this.setState({ sendingEmail: false })
-      notify.show(response.msg)
-    })
-    .catch(err => console.log(err))
+      .sendemail({ email: this.state.email })
+      .then(response => {
+        this.setState({ sendingEmail: false })
+        notify.show(response.msg, 'success')
+      })
+      .catch(err => notify.show(err, 'danger'))
   }
 
   render() {
