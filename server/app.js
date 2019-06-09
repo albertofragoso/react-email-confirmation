@@ -28,7 +28,8 @@ const app = express();
 // Cors configuration
 
 app.use(cors({
-    origin: true
+    origin: true,
+    credentials: true
   })
 )
 
