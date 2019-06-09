@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:300/'
+const baseURL = 'http://localhost:3000/'
 
 class EmailService {
   constructor() {
@@ -12,7 +12,7 @@ class EmailService {
 
   wakeup = () => {
     return this.service
-      .get('/wake-up')
+      .get('/wakeup')
       .then(({ data }) => data)
       .catch(err => err)
   }

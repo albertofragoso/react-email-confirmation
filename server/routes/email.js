@@ -3,9 +3,9 @@ const router = express.Router()
 const User = require('../models/User')
 const { sendEmail } = require('../helpers/nodemailer')
 
-router.get('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
   const { email } = req.body
-  User.find({ email })
+  User.findOne({ email })
     .then(user => {
       if(!user) {
         User.create({ email })
